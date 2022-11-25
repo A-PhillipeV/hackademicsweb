@@ -1,0 +1,70 @@
+*{
+    margin:0;
+    padding:0;
+    font-family: sans-serif;
+}
+.banner{
+    width: 50%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)), url(comet.jpg);
+    background-size: cover;
+    background-position: left;
+}
+
+.hack1 h1{
+    font-size: 125px;
+    text-align: right;
+    transform: translateY(100%);
+    color:white;
+}
+
+.hack2 h1{
+    font-size: 125px;
+    transform: translateX(100%);
+    color:darkblue;
+}
+
+.hack2 p{
+    font-size: 50px;
+    transform: translateX(77%);
+    text-align: end;
+    font:
+}
+
+.navbar{
+    width: 50%;
+    margin:auto;
+    padding: 35px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transform: translate(800px, -400px);
+}
+
+.navbar ul li{
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+    position: relative;
+}
+
+.navbar ul li a{
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+}
+
+.navbar ul li::after{
+    content: '';
+    height: 3px;
+    width: 0;
+    background: blue;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    transition: .5s;
+}
+
+.navbar ul li:hover::after{
+    width:100%
+}
