@@ -1,0 +1,146 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif
+}
+
+.comet {
+    background-color: red;
+    width: 50%;
+    height: 100vh;
+    float:left;
+    
+    background-image: linear-gradient(to right, rgba(0,0,0,.05),rgba(0,0,0,.75)), url(comet.webp);
+    background-size: cover;
+    background-position: left;
+}
+
+.comet h1 {
+    color:white;
+    text-align: right;
+    transform: translateY(60%);
+    font-size:150px;
+}
+.blank{
+    width: 50%;
+    float:right;
+}
+
+.blank h1{
+    transform: translateY(60%);
+    font-size: 150px;
+    
+    background-image: url(comet.webp);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color:transparent ;  
+}
+
+.blank .content p {
+    color: darkgoldenrod;
+    font-size: 50px;
+    
+    position: relative;
+    left:.
+}
+
+.blank .content p1 {
+    color: darkgoldenrod;
+    font-size: 25px;
+    position: relative;
+    left:15%
+}
+
+.navbar{
+    width: 100%;
+    margin:auto;
+    padding: 35px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    transform: translateY(-190%);
+}
+
+
+
+.navbar ul li{
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+    position: relative;
+}
+
+.navbar ul li a{
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+}
+
+.navbar ul li::after{
+    content: '';
+    height: 3px;
+    width: 100%;
+    background: GOLD;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    transition-duration: .5s;
+}
+
+.navbar ul li:hover::after{
+    width:100%;
+    color: GOLD;
+}
+
+
+button {
+    width: 190px;
+    padding: 15px 0;
+    text-align: center;
+    margin: 20px 10px;
+    border-radius: 25px;
+    font-weight: bold;
+    border: 2px solid gold;
+    background: transparent;
+    color:black;
+    cursor:pointer;
+    
+    position: relative;
+    transform: translate(0px);
+    overflow: hidden;
+}
+
+span{
+    background: gold;
+    height:100%;
+    width:0;
+    border-radius:25px;
+    position: absolute;
+    left:0;
+    bottom:0;
+    z-index: -1;
+    transition-duration:0.5s;
+}
+
+button:hover span{
+    width:100%;
+}
+button:hover{
+    border:none;
+}
+
+
+.nhslogo {
+    position: absolute;
+}
+
+.blank .content p2 {
+    
+    position: relative;
+    bottom: -30;
+    left:100;
+    
+    color:darkgoldenrod;
+    font-family: monospace
+}
