@@ -1,7 +1,7 @@
 # HACKADEMICS WEBSITE
 
 ### Static Folder
-This folder will contain all of the **CSS files** and **Images**
+This folder will contain all of the **CSS files**,**Images**, and **fonts**
 
 
 ### Templates Folder
