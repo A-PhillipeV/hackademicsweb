@@ -1,7 +1,14 @@
 *{
     margin: 0;
     padding: 0;
-    font-family: sans-serif
+    font-family: sans-serif;
+    
+    max-width: 100%
+}
+
+@font-face {
+   font-family: myFirstFont;
+   src: url(AboveDemoRegular-lJMd.ttf);
 }
 
 .comet {
@@ -38,17 +45,19 @@
 
 .blank .content p {
     color: darkgoldenrod;
-    font-size: 50px;
-    
+    font-size: 35px;
     position: relative;
-    left:.
+    text-align: center;
+    font-family: myFirstFont;
 }
 
 .blank .content p1 {
     color: darkgoldenrod;
-    font-size: 25px;
+    font-size: 20px;
     position: relative;
-    left:15%
+    left:15%;
+    
+    font-family: myFirstFont;
 }
 
 .navbar{
@@ -56,10 +65,11 @@
     margin:auto;
     padding: 35px 0;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    align-items: flex-end;
+    justify-content: center;
     
-    transform: translateY(-190%);
+    position: relative;
+    bottom:175px;
 }
 
 
@@ -75,13 +85,15 @@
     text-decoration: none;
     color: black;
     text-transform: uppercase;
+    
+    font-family: myFirstFont;
 }
 
 .navbar ul li::after{
     content: '';
     height: 3px;
     width: 100%;
-    background: GOLD;
+    background: gold;
     position: absolute;
     left: 0;
     bottom: -10px;
@@ -90,12 +102,13 @@
 
 .navbar ul li:hover::after{
     width:100%;
-    color: GOLD;
+    background: blue;
+    
 }
 
 
 button {
-    width: 190px;
+    width: 180px;
     padding: 15px 0;
     text-align: center;
     margin: 20px 10px;
@@ -130,16 +143,22 @@ button:hover{
     border:none;
 }
 
+button a {
+    text-decoration: none;
+    color:black;
+}
+
 
 .nhslogo {
     position: absolute;
+    right:20;
+    bottom:20;
 }
 
 .blank .content p2 {
-    
     position: relative;
-    bottom: -30;
-    left:100;
+    bottom: -100;
+    left:360;
     
     color:darkgoldenrod;
     font-family: monospace
