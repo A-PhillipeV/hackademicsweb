@@ -1,28 +1,44 @@
 <html>
     <head>
         <title>Hackademics Programs</title>
-        <link rel="stylesheet" href="programsstyle.css">
-    </head>
-    
-    <body>
+        <link rel="stylesheet" href="/static/programsstyle.css">
         
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        
+        <script>
+          $(function() {
+            $("#visible" || "#visible2").click(function() {
+                $('#invisible' || '#invisible2').toggleClass("show");
+                });  
+            });
+        </script>
+        <style>
+          .hide{display:none;}
+          .show{display:block;}
+        </style>
+
+    </head>
+    <body>
         <div class ="banner">
             <div class="navbar">
                     <ul>
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="#">About</a></li>
+                        <li><a href="aboutus.html">About</a></li>
                         <li><a href="programs.html">Programs</a></li>
-                        <li><a href="#">Login</a></li>
+                        <li><a href="login.html">Login</a></li>
                         <li><a href="https://hhs.hackensackschools.org/All%20HHS%20Departments/National%20Honor%20Society/National%20Honor%20Society%20Index.html">Hackensack NHS</a></li>
                     </ul>
             </div>
 
             <div class="beginning">
                 <h1>Our Programs</h1>
-                <h2><br>Check out our listed programs!</h2>
+                <h2>Check out our listed programs!</h2>
             </div>
+            
         </div>
-        
         
         <table class="table1">
             <thead>
@@ -33,16 +49,50 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>Java</td>
-                    <td> Placeholder </td>
+                    <td id="visible">Java</td>
+                    <td> Criminal Justice/Law </td>
                 </tr>
                 <tr>
-                    <td>Math</td>
-                    <td> Placeholder </td>
+                    <td id="visible">Math</td>
+                    <td> English </td>
+                </tr>
+
+                <tr>
+                    <td>Python</td>
+                    <td> </td>
+                </tr>
+
+                <tr>
+                    <td>Medical Enrichment</td>
+                    <td></td>
                 </tr>
             </tbody>
-        
         </table>
+        
+        
+    
+        
+        <div id="invisible" class="java hide">
+            <h1>Java</h1>
+            <p>Program Lead: fill<br>Class Leads:n/a<br></p>
+        
+        
+            <p><br>Description:Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nibh neque, mollis ut sem vel, eleifend tincidunt libero. Mauris et sapien sollicitudin, maximus quam venenatis, consequat diam. Duis est tortor, ultrices dapibus vulputate pretium, bibendum nec ante. Morbi sodales mattis erat, ut porta sapien accumsan faucibus. Integer condimentum lacinia ipsum quis aliquam. Suspendisse magna justo, venenatis at ultrices id, semper id neque. Donec tristique tellus vitae tortor hendrerit, tincidunt commodo tortor fermentum. </p>
+            
+            <button onclick="location.href='#'" type="button"><span></span>PROGRAM SIGN UP</button>
+            
+        </div>
+        
+        <div id="invisible2" class="math hide">
+            <h1>Math</h1>
+            <p>Program Lead: fill<br>Class Leads:n/a<br></p>
+        
+        
+            <p><br>Description:Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nibh neque, mollis ut sem vel, eleifend tincidunt libero. Mauris et sapien sollicitudin, maximus quam venenatis, consequat diam. Duis est tortor, ultrices dapibus vulputate pretium, bibendum nec ante. Morbi sodales mattis erat, ut porta sapien accumsan faucibus. Integer condimentum lacinia ipsum quis aliquam. Suspendisse magna justo, venenatis at ultrices id, semper id neque. Donec tristique tellus vitae tortor hendrerit, tincidunt commodo tortor fermentum. </p>
+            
+            <button onclick="location.href='#'" type="button"><span></span>PROGRAM SIGN UP</button>
+            
+        </div>
         
         
     </body>
