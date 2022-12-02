@@ -10,6 +10,11 @@
    src: url("CarrolwildClean-9YpKK.otf") format("opentype");
 }
 
+@font-face {
+   font-family: font2;
+   src: url(AboveDemoRegular-lJMd.ttf);
+}
+
 
 .banner {
     background-color: red;
@@ -27,7 +32,7 @@
     font-family:font;
     color:gold;
     
-    font-size: 50px
+    font-size: 50px;
 }
 
 .banner .beginning h2 {
@@ -47,13 +52,16 @@
 
 .table1 {
     width:50%;
+    height: 60vh;
     align-items: center;
-    
     position: relative;
+    
+    float:left;
 }
 
 th {
-    font-size:50px
+    font-size:50px;
+    background-color:white;
 }
 td {
     text-align: center;
@@ -63,11 +71,15 @@ td {
 .table1, th, td {
     border:2px solid black;
     
-    border-radius: 10px;
+    
+    font-family: font;
 }
 
 tr:nth-child(even) {
-  background-color: palegoldenrod;
+}
+
+tr:nth-child(odd) {
+  background-color: gold;
 }
 
 
@@ -97,6 +109,7 @@ tr:nth-child(even) {
     text-decoration: none;
     color: white;
     text-transform: uppercase;
+    font-family: font2;
 }
 
 .navbar ul li::after{
@@ -116,3 +129,82 @@ tr:nth-child(even) {
     
 }
 
+.table {
+    float:left;
+    width:100%;
+}
+
+.java {
+    float:right;
+    width:50%;
+}
+
+.java h1 {
+    text-align: center;
+    font-size: 50px;
+    font-family: font;
+}
+
+.java p {
+    font-family: font;
+    line-height: 1.25;
+}
+
+.math {
+    float:right;
+    width:50%;
+}
+
+.math h1 {
+    text-align: center;
+    font-size: 50px;
+    font-family: font;
+}
+
+.math p {
+    font-family: font;
+    line-height: 1.25;
+}
+
+
+
+button {
+    width: 200px;
+    padding: 15px 0;
+    text-align: center;
+    margin: 20px 10px;
+    border-radius: 25px;
+    font-weight: bold;
+    border: 2px solid gold;
+    background: transparent;
+    color:black;
+    cursor:pointer;
+    
+    position: relative;
+    right:-32.5%;
+    overflow: hidden;
+}
+
+span{
+    background: gold;
+    height:100%;
+    width:0;
+    border-radius:25px;
+    position: absolute;
+    left:0;
+    bottom:0;
+    z-index: -1;
+    transition-duration:0.5s;
+}
+
+button:hover span{
+    width:100%;
+}
+button:hover{
+    border:none;
+}
+
+button a {
+    text-decoration: none;
+    color:black;
+}
