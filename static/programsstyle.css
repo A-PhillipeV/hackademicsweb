@@ -166,7 +166,75 @@ tr:nth-child(odd) {
     line-height: 1.25;
 }
 
+.python {
+    float:right;
+    width:50%;
+}
 
+.python h1 {
+    text-align: center;
+    font-size: 50px;
+    font-family: font;
+}
+
+.python p {
+    font-family: font;
+    line-height: 1.25;
+}
+
+
+.medical {
+    float:right;
+    width:50%;
+}
+
+.medical h1 {
+    text-align: center;
+    font-size: 50px;
+    font-family: font;
+}
+
+.medical p {
+    font-family: font;
+    line-height: 1.25;
+}
+
+.law {
+    float:right;
+    width:50%;
+}
+
+.law h1 {
+    text-align: center;
+    font-size: 50px;
+    font-family: font;
+}
+
+.law p {
+    font-family: font;
+    line-height: 1.25;
+}
+
+.emglish {
+    float:right;
+    width:50%;
+}
+
+.english h1 {
+    text-align: center;
+    font-size: 50px;
+    font-family: font;
+}
+
+.english p {
+    font-family: font;
+    line-height: 1.25;
+}
+
+.filler {
+    float:right;
+    width:50%;
+}
 
 button {
     width: 200px;
