@@ -151,14 +151,14 @@ button a {
 
 .nhslogo {
     position: absolute;
-    right:20;
-    bottom:20;
+    right:1%;
+    bottom:2%;
 }
 
 .blank .content p2 {
-    position: relative;
-    bottom: -100;
-    left:360;
+    position: absolute;
+    right:8%;
+    bottom:5%;
     
     color:darkgoldenrod;
     font-family: monospace
