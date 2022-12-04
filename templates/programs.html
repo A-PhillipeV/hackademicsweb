@@ -4,85 +4,17 @@
         <link rel="stylesheet" href="../static/programsstyle.css" type="text/css">
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        
-        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-        
-        <script>
-        
-        
-            
-            
-            
-          $(function() {
-            $("#visible").click(function() {
-                $('#invisible').toggleClass("show");
-                });  
-            });
-      
-            
-        $(function() {
-            $("#visible2").click(function() {
-                $('#invisible2').toggleClass("show2");
-                });  
-            });
-            
-            
-        $(function() {
-            $("#visible3").click(function() {
-                $('#invisible3').toggleClass("show3");
-                });  
-            });
-            
-        $(function() {
-            $("#visible4").click(function() {
-                $('#invisible4').toggleClass("show4");
-                });  
-            });
-            
-        $(function() {
-            $("#visible5").click(function() {
-                $('#invisible5').toggleClass("show5");
-                });  
-            });
-            
-            
-        $(function() {
-            $("#visible6").click(function() {
-                $('#invisible6').toggleClass("show6");
-                });  
-            });
-        </script>
-        
-        <style>
-          .hide{display:none;}
-          .show{display:block;}
-            
-          .hide2{display:none;}
-          .show2{display:block;}
-            
-          .hide3{display:none;}
-          .show3{display:block;}
-            
-          .hide4{display:none;}
-          .show4{display:block;}
-            
-          .hide5{display:none;}
-          .show5{display:block;}
-            
-          .hide6{display:none;}
-          .show6{display:block;}
-        </style>
 
     </head>
+
     <body>
         <div class ="banner">
             <div class="navbar">
                     <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="aboutus.html">About</a></li>
-                        <li><a href="programs.html">Programs</a></li>
-                        <li><a href="login.html">Login</a></li>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/programs">Programs</a></li>
+                        <li><a href="/login">Login</a></li>
                         <li><a href="https://hhs.hackensackschools.org/All%20HHS%20Departments/National%20Honor%20Society/National%20Honor%20Society%20Index.html">Hackensack NHS</a></li>
                     </ul>
             </div>
@@ -103,21 +35,21 @@
             </thead>
             <tbody>
                 <tr>
-                    <td id="visible">Java</td>
-                    <td id="visible5"> Criminal Justice/Law </td>
+                    <td><button onclick = "display(0)"> JAVA </button></td>
+                    <td><button onclick = "display(1)"> CRIMINAL JUSTICE/LAW</button> </td>
                 </tr>
                 <tr>
-                    <td id="visible2">Math</td>
-                    <td id="visible6"> English </td>
+                    <td> <button onclick = "display(2)"> MATH </button> </td>
+                    <td> <button onclick = "display(3)"> ENGLISH </button>  </td>
                 </tr>
 
                 <tr>
-                    <td id="visible3">Python</td>
+                    <td> <button onclick = "display(4)"> </button> Python</td>
                     <td> </td>
                 </tr>
 
                 <tr>
-                    <td id=visible4>Medical Enrichment</td>
+                    <td> <button onclick = "display(5)"> MEDICAL ENRICHMENT </button></td>
                     <td></td>
                 </tr>
             </tbody>
@@ -125,79 +57,164 @@
         
         
     
+        <!-- ALL  -->
+        <div>
+            <h1 id = "addHeader"></h1>
+            <p id = "progLead"> </p>
+            <p id = "classLead"></p>
         
-        <div id="invisible" class="java hide">
-            <h1>Java</h1>
-            <p>Program Lead: fill<br>Class Leads:n/a<br></p>
         
-        
-            <p><br>Description:Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nibh neque, mollis ut sem vel, eleifend tincidunt libero. Mauris et sapien sollicitudin, maximus quam venenatis, consequat diam. Duis est tortor, ultrices dapibus vulputate pretium, bibendum nec ante. Morbi sodales mattis erat, ut porta sapien accumsan faucibus. Integer condimentum lacinia ipsum quis aliquam. Suspendisse magna justo, venenatis at ultrices id, semper id neque. Donec tristique tellus vitae tortor hendrerit, tincidunt commodo tortor fermentum. </p>
-            
-            <button onclick="location.href='#'" type="button"><span></span>JAVA PROGRAM SIGN UP</button>
-            
+            <p id = "description"> </p>
+        </div>
+
+        <div>
+            <button onclick="location.href='#'" type="button"><span></span>PROGRAM SIGN UP</button>
+            <div class="filler">
+                <img class = "nhslogo" src="../static/nhslogo.png" alt="NHS" width="100" height="100">
+            </div>
         </div>
         
-        <div id="invisible2" class="math hide2">
-            <h1>Math</h1>
-            <p>Program Lead: fill<br>Class Leads:n/a<br></p>
-        
-        
-            <p><br>Description:Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nibh neque, mollis ut sem vel, eleifend tincidunt libero. Mauris et sapien sollicitudin, maximus quam venenatis, consequat diam. Duis est tortor, ultrices dapibus vulputate pretium, bibendum nec ante. Morbi sodales mattis erat, ut porta sapien accumsan faucibus. Integer condimentum lacinia ipsum quis aliquam. Suspendisse magna justo, venenatis at ultrices id, semper id neque. Donec tristique tellus vitae tortor hendrerit, tincidunt commodo tortor fermentum. </p>
-            
-            <button onclick="location.href='#'" type="button"><span></span>MATH PROGRAM SIGN UP</button>
-            
-        </div>
-        
-        <div id="invisible3" class="python hide3">
-            <h1>Python</h1>
-            <p>Program Lead: fill<br>Class Leads:n/a<br></p>
-        
-        
-            <p><br>Description:Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nibh neque, mollis ut sem vel, eleifend tincidunt libero. Mauris et sapien sollicitudin, maximus quam venenatis, consequat diam. Duis est tortor, ultrices dapibus vulputate pretium, bibendum nec ante. Morbi sodales mattis erat, ut porta sapien accumsan faucibus. Integer condimentum lacinia ipsum quis aliquam. Suspendisse magna justo, venenatis at ultrices id, semper id neque. Donec tristique tellus vitae tortor hendrerit, tincidunt commodo tortor fermentum. </p>
-            
-            <button onclick="location.href='#'" type="button"><span></span>PYTHON PROGRAM SIGN UP</button>
-            
-        </div>
-        
-        <div id="invisible4" class="medical hide4">
-            <h1>Medical Enrichment</h1>
-            <p>Program Lead: fill<br>Class Leads:n/a<br></p>
-        
-        
-            <p><br>Description:Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nibh neque, mollis ut sem vel, eleifend tincidunt libero. Mauris et sapien sollicitudin, maximus quam venenatis, consequat diam. Duis est tortor, ultrices dapibus vulputate pretium, bibendum nec ante. Morbi sodales mattis erat, ut porta sapien accumsan faucibus. Integer condimentum lacinia ipsum quis aliquam. Suspendisse magna justo, venenatis at ultrices id, semper id neque. Donec tristique tellus vitae tortor hendrerit, tincidunt commodo tortor fermentum. </p>
-            
-            <button onclick="location.href='#'" type="button"><span></span>MEDICAL ENRICHMENT PROGRAM SIGN UP</button>
-            
-        </div>
-        
-        <div id="invisible5" class="law hide4">
-            <h1>Criminal Justice/Law</h1>
-            <p>Program Lead: fill<br>Class Leads:n/a<br></p>
-        
-        
-            <p><br>Description:Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nibh neque, mollis ut sem vel, eleifend tincidunt libero. Mauris et sapien sollicitudin, maximus quam venenatis, consequat diam. Duis est tortor, ultrices dapibus vulputate pretium, bibendum nec ante. Morbi sodales mattis erat, ut porta sapien accumsan faucibus. Integer condimentum lacinia ipsum quis aliquam. Suspendisse magna justo, venenatis at ultrices id, semper id neque. Donec tristique tellus vitae tortor hendrerit, tincidunt commodo tortor fermentum. </p>
-            
-            <button onclick="location.href='#'" type="button"><span></span>CRIMINAL JUSTICE/LAW PROGRAM SIGN UP</button>
-            
-        </div>
-        
-        <div id="invisible6" class="english hide4">
-            <h1>English</h1>
-            <p>Program Lead: fill<br>Class Leads:n/a<br></p>
-        
-        
-            <p><br>Description:Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nibh neque, mollis ut sem vel, eleifend tincidunt libero. Mauris et sapien sollicitudin, maximus quam venenatis, consequat diam. Duis est tortor, ultrices dapibus vulputate pretium, bibendum nec ante. Morbi sodales mattis erat, ut porta sapien accumsan faucibus. Integer condimentum lacinia ipsum quis aliquam. Suspendisse magna justo, venenatis at ultrices id, semper id neque. Donec tristique tellus vitae tortor hendrerit, tincidunt commodo tortor fermentum. </p>
-            
-            <button onclick="location.href='#'" type="button"><span></span>ENGLISH PROGRAM SIGN UP</button>
-            
-        </div>
-        
-        
-        <div class="filler">
-            <img class = "nhslogo" src="../static/nhslogo.png" alt="NHS" width="100" height="100">
-        </div>
+
+
+        <script>
+            function display(program)
+            {
+                let current = document.getElementById("addHeader").textContent
+
+//JAVA
+                if (program === 0)
+                {
+                    //If java is displayed and you click on it again, hide info
+                    if(current === "JAVA") 
+                    {
+                        document.getElementById("addHeader").textContent = ""
+                        document.getElementById("progLead").textContent = ""
+                        document.getElementById("classLead").textContent = ""
+                        document.getElementById("description").textContent = ""
+                    }
+                    else
+                    {
+                        document.getElementById("addHeader").textContent = "JAVA"
+                        document.getElementById("progLead").textContent = "Program Lead: Java Lead"
+                        document.getElementById("classLead").textContent = "Class Lead: Java Class lead"
+                        document.getElementById("description").textContent = "Description:Java is lead by Sir Angelo Phillipe Balenciaga"
+                    }
+                }
+
+
+//CRIMINAL JUSTICE/LAW
+                else if(program === 1)
+                {
+                    if(current === "LAW") 
+                    {
+                        document.getElementById("addHeader").textContent = ""
+                        document.getElementById("progLead").textContent = ""
+                        document.getElementById("classLead").textContent = ""
+                        document.getElementById("description").textContent = ""
+                    }
+                    else
+                    {
+                    document.getElementById("addHeader").textContent = "LAW"
+                    document.getElementById("progLead").textContent = "Program Lead: Law Lead"
+                    document.getElementById("classLead").textContent = "Class Lead: Law Class Lead"
+                    document.getElementById("description").textContent = "Description: Law is lead by idk"
+                    }
+                }
+
+
+//MATH
+                else if(program === 2)
+                {
+                    if(current === "MATH") 
+                    {
+                        document.getElementById("addHeader").textContent = ""
+                        document.getElementById("progLead").textContent = ""
+                        document.getElementById("classLead").textContent = ""
+                        document.getElementById("description").textContent = ""
+                    }
+                    else
+                    {
+                    document.getElementById("addHeader").textContent = "MATH"
+                    document.getElementById("progLead").textContent = "Program Lead: Math Lead"
+                    document.getElementById("classLead").textContent = "Class Lead: Math Class Lead"
+                    document.getElementById("description").textContent = "Description: Math is lead by Tomasz [Middle Name] Sadowy"
+                    }
+                }
+
+
+//ENGLISH
+                else if(program === 3)
+                {
+                    if(current === "ENGLISH") 
+                    {
+                        document.getElementById("addHeader").textContent = ""
+                        document.getElementById("progLead").textContent = ""
+                        document.getElementById("classLead").textContent = ""
+                        document.getElementById("description").textContent = ""
+                    }
+                    else
+                    {
+                    document.getElementById("addHeader").textContent = "ENGLISH"
+                    document.getElementById("progLead").textContent = "Program Lead: English Lead"
+                    document.getElementById("classLead").textContent = "Class Lead: English Class Lead"
+                    document.getElementById("description").textContent = "Description: English is led by idk"
+                    }
+                }
+
+
+
+                else if(program === 4)
+                {
+                    if(current === "PYTHON") 
+                    {
+                        document.getElementById("addHeader").textContent = ""
+                        document.getElementById("progLead").textContent = ""
+                        document.getElementById("classLead").textContent = ""
+                        document.getElementById("description").textContent = ""
+                    }
+                    else
+                    {
+                    document.getElementById("addHeader").textContent = "PYTHON"
+                    document.getElementById("progLead").textContent = "Program Lead: Python Lead"
+                    document.getElementById("classLead").textContent = "Class Lead: Python Class Lead"
+                    document.getElementById("description").textContent = "Description: Python is led by David Elian Valarezo"
+                    }
+                }
+
+//MEDICAL
+                else if(program === 5)
+                {
+                    if(current === "MEDICAL") 
+                    {
+                        document.getElementById("addHeader").textContent = ""
+                        document.getElementById("progLead").textContent = ""
+                        document.getElementById("classLead").textContent = ""
+                        document.getElementById("description").textContent = ""
+                    }
+                    else
+                    {
+                    document.getElementById("addHeader").textContent = "MEDICAL"
+                    document.getElementById("progLead").textContent = "Program Lead: Medical Lead"
+                    document.getElementById("classLead").textContent = "Class Lead: Medical Class Lead"
+                    document.getElementById("description").textContent = "Description: Medical is led by idk"
+                    }
+                }
+
+
+
+
+
+
+
+
+
+
+        } //end of display function
+
+        </script>
         
     </body>
 
 
 </html>
+
