@@ -14,9 +14,8 @@ This will controll all website redirections and insertions into the database
 
 
 ### users.db
-
-      id    email     password
-row 1  
-row 2
-row 3
-etc...
+|      | id | email | password |
+|------|----|-------|----------|
+| row1 |    |       |          |
+| row2 |    |       |          |
+| row3 |    |       |          |
