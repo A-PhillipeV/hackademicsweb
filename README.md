@@ -13,7 +13,7 @@ This folder will contain all of the **html files**
 This will controll all website redirections and insertions into the database
 
 
-###users.db
+### users.db
         id    email     password
 row 1  
 row 2
