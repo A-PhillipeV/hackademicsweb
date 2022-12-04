@@ -1,0 +1,31 @@
+<html>
+	<head>
+		<title> YES </title>
+	</head>
+
+	<body>
+		<h1> USERS </h1>
+		<br>
+		<table>
+			<thead>
+				<tr>
+					<th> ID </th>
+					<th> Email </th>
+					<th> Password </th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{% for user in users %}
+				<tr>
+					<td> {{user[0]}} </td>
+					<td> {{user[1]}} </td>
+					<td> {{user[2]}} </td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table> 
+		
+		
+	</body>
+</html>
