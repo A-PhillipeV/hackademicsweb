@@ -21,4 +21,5 @@ This will controll all website redirections and insertions into the database
 | row3 |    |       |          |
 
 Open by downloading DB browser for SQlite https://sqlitebrowser.org/dl/
+<br>
 I used the standard 32 bit installer for windows
