@@ -15,7 +15,11 @@
    src: url(AboveDemoRegular-lJMd.ttf);
 }
 
-
+.nhslogo {
+    position: absolute;
+    right:15%;
+    
+}
 .banner {
     background-color: red;
     height: 40%;
@@ -57,6 +61,7 @@
     position: relative;
     
     float:left;
+    font-family: font;
 }
 
 th {
@@ -66,6 +71,11 @@ th {
 td {
     text-align: center;
     font-size:30px;
+    font-family: font;
+}
+
+td:hover {
+    color:blue;
 }
 
 .table1, th, td {
@@ -134,109 +144,39 @@ tr:nth-child(odd) {
     width:100%;
 }
 
-.java {
+.content {
     float:right;
     width:50%;
 }
 
-.java h1 {
+.content h1 {
     text-align: center;
     font-size: 50px;
     font-family: font;
+    
 }
 
-.java p {
+.content p {
     font-family: font;
-    line-height: 1.25;
+    line-height: 1.6;
+    
+
 }
 
-.math {
-    float:right;
-    width:50%;
-}
-
-.math h1 {
-    text-align: center;
-    font-size: 50px;
-    font-family: font;
-}
-
-.math p {
-    font-family: font;
-    line-height: 1.25;
-}
-
-.python {
-    float:right;
-    width:50%;
-}
-
-.python h1 {
-    text-align: center;
-    font-size: 50px;
-    font-family: font;
-}
-
-.python p {
-    font-family: font;
-    line-height: 1.25;
-}
-
-
-.medical {
-    float:right;
-    width:50%;
-}
-
-.medical h1 {
-    text-align: center;
-    font-size: 50px;
-    font-family: font;
-}
-
-.medical p {
-    font-family: font;
-    line-height: 1.25;
-}
-
-.law {
-    float:right;
-    width:50%;
-}
-
-.law h1 {
-    text-align: center;
-    font-size: 50px;
-    font-family: font;
-}
-
-.law p {
-    font-family: font;
-    line-height: 1.25;
-}
-
-.emglish {
-    float:right;
-    width:50%;
-}
-
-.english h1 {
-    text-align: center;
-    font-size: 50px;
-    font-family: font;
-}
-
-.english p {
-    font-family: font;
-    line-height: 1.25;
-}
 
 .filler {
     float:right;
     width:50%;
 }
 
+
+button1 {
+    font-family: font;
+    cursor:pointer;
+
+}
 button {
+    display: flex;
     width: 200px;
     padding: 15px 0;
     text-align: center;
@@ -248,9 +188,14 @@ button {
     color:black;
     cursor:pointer;
     
-    position: relative;
-    right:-32.5%;
     overflow: hidden;
+    
+    
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    
+    right:-35%;
 }
 
 span{
