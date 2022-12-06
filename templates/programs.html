@@ -5,6 +5,7 @@
         
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
     </head>
 
     <body>
@@ -35,21 +36,21 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><button onclick = "display(0)"> JAVA </button></td>
-                    <td><button onclick = "display(1)"> CRIMINAL JUSTICE/LAW</button> </td>
+                    <td><button1 onclick = "display(0)"> JAVA </button1></td>
+                    <td><button1 onclick = "display(1)"> CRIMINAL JUSTICE/LAW</button1> </td>
                 </tr>
                 <tr>
-                    <td> <button onclick = "display(2)"> MATH </button> </td>
-                    <td> <button onclick = "display(3)"> ENGLISH </button>  </td>
-                </tr>
-
-                <tr>
-                    <td> <button onclick = "display(4)"> </button> Python</td>
-                    <td> </td>
+                    <td> <button1 onclick = "display(2)"> MATH </button1> </td>
+                    <td> <button1 onclick = "display(3)"> ENGLISH </button1>  </td>
                 </tr>
 
                 <tr>
-                    <td> <button onclick = "display(5)"> MEDICAL ENRICHMENT </button></td>
+                    <td> <button1 onclick = "display(4)"> Python </button1> </td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td> <button1 onclick = "display(5)"> MEDICAL ENRICHMENT </button1></td>
                     <td></td>
                 </tr>
             </tbody>
@@ -58,26 +59,24 @@
         
     
         <!-- ALL  -->
-        <div>
+        <div class = content>
             <h1 id = "addHeader"></h1>
             <p id = "progLead"> </p>
             <p id = "classLead"></p>
         
         
             <p id = "description"> </p>
-        </div>
-
-        <div>
             <button onclick="location.href='#'" type="button"><span></span>PROGRAM SIGN UP</button>
-            <div class="filler">
-                <img class = "nhslogo" src="../static/nhslogo.png" alt="NHS" width="100" height="100">
-            </div>
+            <img class = "nhslogo" src="../static/nhslogo.png" alt="NHS" width="250" height="250">
+
+            
         </div>
+
+            
         
-
-
+        
         <script>
-            function display(program)
+        function display(program)
             {
                 let current = document.getElementById("addHeader").textContent
 
@@ -97,7 +96,7 @@
                         document.getElementById("addHeader").textContent = "JAVA"
                         document.getElementById("progLead").textContent = "Program Lead: Java Lead"
                         document.getElementById("classLead").textContent = "Class Lead: Java Class lead"
-                        document.getElementById("description").textContent = "Description:Java is lead by Sir Angelo Phillipe Balenciaga"
+                        document.getElementById("description").textContent = "Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
                     }
                 }
 
@@ -114,10 +113,10 @@
                     }
                     else
                     {
-                    document.getElementById("addHeader").textContent = "LAW"
+                    document.getElementById("addHeader").textContent = "CRIMINAL JUSTICE/LAW"
                     document.getElementById("progLead").textContent = "Program Lead: Law Lead"
                     document.getElementById("classLead").textContent = "Class Lead: Law Class Lead"
-                    document.getElementById("description").textContent = "Description: Law is lead by idk"
+                    document.getElementById("description").textContent = "Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
                     }
                 }
 
@@ -137,7 +136,7 @@
                     document.getElementById("addHeader").textContent = "MATH"
                     document.getElementById("progLead").textContent = "Program Lead: Math Lead"
                     document.getElementById("classLead").textContent = "Class Lead: Math Class Lead"
-                    document.getElementById("description").textContent = "Description: Math is lead by Tomasz [Middle Name] Sadowy"
+                    document.getElementById("description").textContent = "Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
                     }
                 }
 
@@ -157,7 +156,7 @@
                     document.getElementById("addHeader").textContent = "ENGLISH"
                     document.getElementById("progLead").textContent = "Program Lead: English Lead"
                     document.getElementById("classLead").textContent = "Class Lead: English Class Lead"
-                    document.getElementById("description").textContent = "Description: English is led by idk"
+                    document.getElementById("description").textContent = "Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
                     }
                 }
 
@@ -177,7 +176,7 @@
                     document.getElementById("addHeader").textContent = "PYTHON"
                     document.getElementById("progLead").textContent = "Program Lead: Python Lead"
                     document.getElementById("classLead").textContent = "Class Lead: Python Class Lead"
-                    document.getElementById("description").textContent = "Description: Python is led by David Elian Valarezo"
+                    document.getElementById("description").textContent = "Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
                     }
                 }
 
@@ -193,25 +192,19 @@
                     }
                     else
                     {
-                    document.getElementById("addHeader").textContent = "MEDICAL"
+                    document.getElementById("addHeader").textContent = "MEDICAL ENRICHMENT"
                     document.getElementById("progLead").textContent = "Program Lead: Medical Lead"
                     document.getElementById("classLead").textContent = "Class Lead: Medical Class Lead"
-                    document.getElementById("description").textContent = "Description: Medical is led by idk"
+                    document.getElementById("description").textContent = "Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
                     }
                 }
 
 
-
-
-
-
-
-
-
-
         } //end of display function
-
+        
+        
         </script>
+        
         
     </body>
 
