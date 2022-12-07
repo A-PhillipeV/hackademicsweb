@@ -49,15 +49,43 @@ def programs():
 def login():
 
 	if request.method == "POST": #submitted login form
-		session.permanent = True
-		email = request.form["email"]
-		password = request.form["password"]
-		session["email"] = email
-		session["password"] = password
+		
+		userEmail = request.form["email"]
+		userPassword = request.form["password"]
 		db, connection = get_db()
-		db.execute("INSERT INTO users(email, password) VALUES(?, ?)", (email, password))
+		db.execute('SELECT id FROM users WHERE email=? AND password = ?', (userEmail, userPassword))
+		id = db.fetchall()
+		if id: # if user exists
+			session.permanent = True
+			session["email"] = userEmail
+			session["password"] = userPassword
+			flash(f"You have been logged in {id} {userEmail}")
+			return redirect("dashboard")
+
+		else: #if user doesn't exist
+			flash("Email or Password is Incorrect. Try Again")
+			return redirect("login")
+
+	else: #got there via GET
+		if "email" in session: # if user is already logged in and they get here through GET
+			flash("Already logged in")
+			return redirect("dashboard")
+		return render_template("login.html") # if user isn't logged in and gets here via GET
+
+
+
+@app.route("/signup", methods = ["POST", "GET"])
+def signup():
+	if request.method == "POST": #user submitted sign up sheet
+		session.permanent = True
+		userEmail = request.form["email"]
+		userPassword = request.form["password"]
+		session["email"] = userEmail
+		session["password"] = userPassword
+		db, connection = get_db()
+		db.execute("INSERT INTO users(email, password) VALUES(?, ?)", (userEmail, userPassword))
 		connection.commit()
-		flash("You have been logged in")
+		flash("You have been signed up")
 		return redirect("dashboard")
 
 	else: #got there via GET
@@ -65,8 +93,7 @@ def login():
 			flash("Already logged in")
 			return redirect("dashboard")
 
-		return render_template("login.html") # if user isn't logged in and gets here via GET
-
+		return render_template("signup.html")  # if user isn't logged in and gets here via GET
 		
 '''
 	1. Users who are logged in will see a personalized dashboard
