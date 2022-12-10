@@ -1,0 +1,167 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    
+    max-width: 100%
+}
+
+@font-face {
+   font-family: myFirstFont;
+   src: url(AboveDemoRegular-lJMd.ttf);
+}
+
+.comet {
+    background-color: red;
+    width: 50%;
+    height: 45vh;
+    float:left;
+    
+    background-image: linear-gradient(to right, rgba(0,0,0,.05),rgba(0,0,0,.75)), url(comet.webp);
+    background-size: cover;
+    background-position: left;
+}
+
+.comet h1 {
+    color:white;
+    text-align: right;
+    transform: translateY(60%);
+    font-size:150px;
+}
+.blank{
+    width: 50%;
+    float:right;
+}
+
+.blank p {
+    font-family: myFirstFont;
+    font-size: 30px;
+    position:absolute;
+    
+    top:15%;
+    right:22.5%
+}
+
+.blank h1{
+    transform: translateY(60%);
+    font-size: 150px;
+    
+    background-image: url(comet.webp);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color:transparent;  
+}
+
+.content p {
+    color: darkgoldenrod;
+    font-size: 50px;
+    position: absolute;
+    text-align: center;
+    font-family: myFirstFont;
+    
+    right:30%;
+    bottom:40%;
+    
+}
+
+.content p1 {
+    color: darkgoldenrod;
+    font-size: 20px;
+    position: absolute;
+    font-family: myFirstFont;
+    text-align: center;
+    
+    bottom:30%;
+    left:35%;
+}
+
+.navbar{
+    width: 100%;
+    margin:auto;
+    padding: 35px 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    
+    position: relative;
+    bottom:175px;
+}
+
+
+
+.navbar ul li{
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+    position: relative;
+}
+
+.navbar ul li a{
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+    
+    font-family: myFirstFont;
+}
+
+.navbar ul li::after{
+    content: '';
+    height: 3px;
+    width: 100%;
+    background: gold;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    transition-duration: .5s;
+}
+
+.navbar ul li:hover::after{
+    width:100%;
+    background: blue;
+    
+}
+
+
+button {
+    width: 180px;
+    padding: 15px 0;
+    text-align: center;
+    margin: 20px 10px;
+    border-radius: 25px;
+    font-weight: bold;
+    border: 2px solid gold;
+    background: transparent;
+    color:black;
+    cursor:pointer;
+    
+    position: relative;
+    transform: translate(0px);
+    overflow: hidden;
+}
+
+span{
+    background: gold;
+    height:100%;
+    width:0;
+    border-radius:25px;
+    position: absolute;
+    left:0;
+    bottom:0;
+    z-index: -1;
+    transition-duration:0.5s;
+}
+
+button:hover span{
+    width:100%;
+}
+button:hover{
+    border:none;
+}
+
+button a {
+    text-decoration: none;
+    color:black;
+}
+
+
+
