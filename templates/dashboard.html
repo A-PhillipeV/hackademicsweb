@@ -1,37 +1,41 @@
-<!DOCTYPE html>
 <html>
-    <head>
-        <title>Hackademics</title>
-        <link rel="stylesheet" href="../static/dashstyle.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div class="blank">
-            <h1>ademics</h1>
-            <div class="navbar">
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/programs">Programs</a></li>
-                    <li><a href="/login">Login</a></li>
-                    <li><a href="https://hhs.hackensackschools.org/All%20HHS%20Departments/National%20Honor%20Society/National%20Honor%20Society%20Index.html">Hackensack NHS</a></li>
-                </ul>
-            </div>
-            
-            <p>text</p>
-        </div>
-        
-        <div class="comet">
-            <h1>Hack</h1>
-        </div>
-        
-        
-        <div class="content">
-                <p>Welcome [email]</p>
-                <p1>Click on your programs and <br>dive into the world of Hackademics!</p1>
-                
-        
-            </div>
-    
-    </body>
+	<head>
+		<title> YES </title>
+	</head>
+
+	<body>
+		<h1> Here are your courses {{email}} </h1>
+		<br>
+		<table>
+			<thead>
+				<tr>
+					<th> |Course_ID| </th>
+					<th> |Course_Name| </th>
+					<th> |Current_Lesson| </th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{% for course in courses %}
+				<tr>
+					<td> {{course[0]}} </td>
+					<td> {{course[1]}} </td>
+					<td> {{course[2]}} </td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table> 
+		
+		{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			{% for msg in messages %}
+				<p> {{msg}} </p>
+			{% endfor %}
+		{% endif %}	
+		{% endwith %}
+
+
+		
+	</body>
 </html>
+
