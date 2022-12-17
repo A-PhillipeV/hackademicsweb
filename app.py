@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect, request, session, flash, g
 from datetime import timedelta
 import sqlite3
+import re
 
 
 app = Flask(__name__)
@@ -16,7 +17,11 @@ def get_db():
 	if connection is None: # open database if no database is active
 		connection = g._database = sqlite3.connect('users.db')
 		db = connection.cursor()
-		db.execute("""CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY, email TEXT, password TEXT)""")
+		db.execute("""CREATE TABLE IF NOT EXISTS users(user_id INTEGER PRIMARY KEY, email TEXT, password TEXT)""")
+		db.execute("""CREATE TABLE IF NOT EXISTS courses(course_id INTEGER PRIMARY KEY,
+			user_id INTEGER, course_name TEXT, lesson INTEGER, 
+			FOREIGN KEY(user_id) REFERENCES users(user_id))""")
+
 		connection.commit()
 	return db, connection
 
@@ -53,13 +58,14 @@ def login():
 		userEmail = request.form["email"]
 		userPassword = request.form["password"]
 		db, connection = get_db()
-		db.execute('SELECT id FROM users WHERE email=? AND password = ?', (userEmail, userPassword))
-		id = db.fetchall()
-		if id: # if user exists
+		db.execute('SELECT user_id FROM users WHERE email=? AND password = ?', (userEmail, userPassword))
+		user_id = db.fetchall() # returns a tuple like this: (userId,)
+		if user_id: # if user exists
 			session.permanent = True
+			session["user_id"] = user_id[0]
 			session["email"] = userEmail
 			session["password"] = userPassword
-			flash(f"You have been logged in {id} {userEmail}")
+			flash(f"You have been logged in {userEmail}")
 			return redirect("dashboard")
 
 		else: #if user doesn't exist
@@ -80,13 +86,37 @@ def signup():
 		session.permanent = True
 		userEmail = request.form["email"]
 		userPassword = request.form["password"]
-		session["email"] = userEmail
-		session["password"] = userPassword
-		db, connection = get_db()
-		db.execute("INSERT INTO users(email, password) VALUES(?, ?)", (userEmail, userPassword))
-		connection.commit()
-		flash("You have been signed up")
-		return redirect("dashboard")
+		validEmail = re.search(r".+@.+\.", userEmail)
+
+		#email has good format
+		if validEmail:
+			db, connection = get_db()
+			db.execute('SELECT user_id FROM users WHERE email=?', (userEmail,))
+			userExists = db.fetchall()
+			flash(f"user_id: {userExists}")
+
+			#check if email already exists
+			if not userExists:
+				db.execute("INSERT INTO users(email, password) VALUES(?, ?)", (userEmail, userPassword))
+				connection.commit()
+
+				db.execute("SELECT user_id FROM users WHERE email = ?", (userEmail,))
+				user_id = db.fetchall()
+				session["user_id"] = user_id[0]
+				session["email"] = userEmail
+				session["password"] = userPassword
+
+				flash("You have been signed up")
+				return redirect("dashboard")
+			#if email already exists
+			else:
+				flash("An account with the same email already exists")
+				return redirect("signup")
+
+		#email has bad format
+		else:
+			flash("Email is incorrectly formatted")
+			return redirect("signup")
 
 	else: #got there via GET
 		if "email" in session: # if user is already logged in and they get here through GET
@@ -101,9 +131,14 @@ def signup():
 '''
 @app.route("/dashboard")
 def dashboard():
-	if "email" in session: # say hi via personalized email (if logged in)
-		email = session["email"]
-		return render_template("dashboard.html", email = email)
+	if "user_id" in session: # say hi via personalized email (if logged in)
+		user_id = session["user_id"]
+		userEmail = session["email"]
+		db, connection = get_db()
+		db.execute("SELECT course_id, course_name, lesson FROM courses WHERE user_id = ?", (user_id))
+		courseList = db.fetchall()
+		return render_template("dashboard.html", email = userEmail, courses = courseList)
+	
 	else:
 		flash("you are not logged in")
 		return redirect("login")
@@ -113,6 +148,7 @@ def dashboard():
 @app.route("/logout")
 def logout():
 	flash("You have been logged out!", "info")
+	session.pop("user_id", None)
 	session.pop("user", None)      #removes the "user" data from the sessions dictionary; None is a msg
 	session.pop("email", None)
 	return redirect("login")
