@@ -6,7 +6,7 @@ import re
 
 app = Flask(__name__)
 app.secret_key = "Testing"
-app.permanent_session_lifetime = timedelta(seconds = 30)
+app.permanent_session_lifetime = timedelta(minutes = 3)
 
 '''
 	1. Get the connection and db object so we can db.execute & connection.commit from any route
@@ -18,7 +18,7 @@ def get_db():
 		connection = g._database = sqlite3.connect('users.db')
 		db = connection.cursor()
 		db.execute("""CREATE TABLE IF NOT EXISTS users(user_id INTEGER PRIMARY KEY, email TEXT, password TEXT)""")
-		db.execute("""CREATE TABLE IF NOT EXISTS courses(course_id INTEGER PRIMARY KEY,
+		db.execute("""CREATE TABLE IF NOT EXISTS courses(course_id INTEGER,
 			user_id INTEGER, course_name TEXT, lesson INTEGER, 
 			FOREIGN KEY(user_id) REFERENCES users(user_id))""")
 
@@ -93,7 +93,7 @@ def signup():
 			db, connection = get_db()
 			db.execute('SELECT user_id FROM users WHERE email=?', (userEmail,))
 			userExists = db.fetchall()
-			flash(f"user_id: {userExists}")
+			#flash(f"user_id: {userExists}") #testing returned id
 
 			#check if email already exists
 			if not userExists:
@@ -136,7 +136,7 @@ def dashboard():
 		userEmail = session["email"]
 		db, connection = get_db()
 		db.execute("SELECT course_id, course_name, lesson FROM courses WHERE user_id = ?", (user_id))
-		courseList = db.fetchall()
+		courseList = db.fetchall() #returns a tuple: (course_id, course_name, lesson)
 		return render_template("dashboard.html", email = userEmail, courses = courseList)
 	
 	else:
@@ -163,6 +163,57 @@ def users():
 	db.execute("SELECT * FROM users")   #This creates a list of tuples; [(col1, col2, col3), {col1, col2, col3)
 	userList = db.fetchall()
 	return render_template("users.html", users = userList)
+
+@app.route("/joinCourse", methods = ["POST", "GET"])
+def joinCourse(): #TO DO 12/20/22 MAKE courses into a dictionary to assign courseID
+	#user must be signed in to register for courses
+	if "user_id" in session:
+		courseList = ["Java", "Criminal Justice/Law", "Math", 
+					"English", "Python", "Medical Enrichment"]
+
+		#TO DO: POST (12/19/22)
+		if request.method == "POST": #user submitted form
+			course = request.form.get("course")
+			# check if course exists in case user tries changin values using inspect
+			if not course in courseList:
+				flash("Course not found")
+				return redirect("joinCourse")
+
+			else: # appropriate value submitted
+				course_id = 0
+				for i in range(len(courseList)): #find course_id
+					if course == courseList[i]:
+						course_id = i
+
+				user_id = session["user_id"]	#returns a tuple (looks like this): (id,)
+				db, connection = get_db()
+
+
+				#Find the courses the user already has
+				db.execute("SELECT course_id FROM courses WHERE user_id = ?", (user_id))
+				userCourses = db.fetchall() # returns a list of tuples: [(0,), (0,), (2,)]
+
+				#make sure the user isn't signing up for a course they're already in
+				for index in userCourses:
+					for item in index:
+						if item == course_id:
+							flash("You are already in this course!")
+							return redirect("dashboard")
+
+
+				#the user doesn't have this course yet
+				db.execute("INSERT INTO courses(course_id, user_id, course_name) VALUES(?, ?, ?)", (course_id, user_id[0], course))
+				connection.commit()
+				flash(f"Courses variable: {course} and user_id {user_id} and course_id: {course_id} and userCourses: {userCourses}")					
+
+				return redirect("dashboard")
+
+		else: #user got here via "GET"
+			return render_template("joinCourse.html")
+
+	else: #user not signed in
+		flash("LOGIN (courtesy of the joinCourse page)")
+		return redirect("login")
 
 
 
