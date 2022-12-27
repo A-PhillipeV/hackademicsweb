@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<title> YES </title>
+	</head>
+
+	<body>
+		<h1> SIGN UP FOR COURSES (BETA) </h1>
+		<br>
+		
+		<form action = "/joinCourse" method = "post">
+			<select name = "course">
+				<option disabled selected> Course </option>
+				<option value = "Java"> Java </option>
+				<option value = "Criminal Justice/Law"> Criminal Justice/Law </option>
+				<option value = "Math"> Math </option>
+				<option value = "English"> English </option>
+				<option value = "Python"> Python </option>
+				<option value = "Medical Enrichment"> Medical Enrichment </option>
+			</select>
+			<button type="submit"> SUBMIT </button>
+		</form>
+
+
+		<div>
+			{% with messages = get_flashed_messages() %}
+				{% if messages %}
+					{% for msg in messages %}
+						<p> {{msg}} </p>
+					{% endfor %}
+				{% endif %}	
+			{% endwith %}
+		</div>
+		
+		
+	</body>
+</html>
