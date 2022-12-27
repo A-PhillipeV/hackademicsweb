@@ -33,45 +33,110 @@
             <h1>Welcome, {{email}}!</h1>
             <p>Courses and Classrooms</p>
 
-            <div class = "classes">
-                <div class = "java">
-                    <img class = "javaicon" src="../static/javaicon.png" alt="java" width="50" height="50">
-                    <h1>Java</h1>
-                    <button onclick="location.href='login.html'" type="button"><span></span>Go to Classroom</button>
-                </div>
-
-                <div class = "crim">
-                    <img class = "crimicon" src="../static/crimicon.png" alt="crim" width="50" height="50">
-                    <h1>criminal justice/law</h1>
-                    <button onclick="location.href='login.html'" type="button"><span></span>Go to Classroom</button>
-                </div>
-
-                <div class = "math">
-                    <img class = "mathicon" src="../static/mathicon.png" alt="math" width="50" height="50">
-                    <h1>Math</h1>
-                    <button onclick="location.href='login.html'" type="button"><span></span>Go to Classroom</button>
-                </div>
-
-                <div class = "eng">
-                    <img class = "engicon" src="../static/engicon.png" alt="english" width="50" height="50">
-                    <h1>english</h1>
-                    <button onclick="location.href='login.html'" type="button"><span></span>Go to Classroom</button>
-                </div>               
-                
-                
-                <div class = "python">
-                    <img class = "pythonicon" src="../static/pythonicon.png" alt="python" width="50" height="50">
-                    <h1>python</h1>
-                    <button onclick="location.href='login.html'" type="button"><span></span>Go to Classroom</button>
-                </div>
-
-                <div class = "med">
-                    <img class = "medicon" src="../static/medicon.png" alt="medical" width="50" height="50">
-                    <h1>medical enrichment</h1>
-                    <button onclick="location.href='login.html'" type="button"><span></span>Go to Classroom</button>
-                </div>
+            <div class = "classes" id = "classContainer">
+                <!-- CLASSES ARE INSERTED HERE-->
 
             </div>
         </div>
+
+        
+        <h1> Here are your courses {{email}} (DELETE IF YOU WANT) </h1>
+        <br>
+        <table>
+            <thead>
+                <tr>
+                    <th> |Course_ID| </th>
+                    <th> |Course_Name| </th>
+                    <th> |Current_Lesson| </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for course in courses %}
+                <tr>
+                    <td> {{course[0]}} </td>
+                    <td> {{course[1]}} </td>
+                    <td> {{course[2]}} </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table> 
+
+
+
+        <script>
+            var courseArray = [];
+            var courses = {{courses | tojson}}
+            for(let course in courses) //course = (course_Id, course_name)
+            {
+                console.log("Course: " + courses[course][0]);
+                courseArray.push(courses[course][0]);
+            }
+            console.log(courseArray);
+
+            /* Optional: sort the array */
+
+            for(let i = 0; i < courseArray.length; i++)
+            {
+                console.log(courseArray[i]);
+                if (courseArray[i] === 0) //java
+                    container("Java", "../static/javaicon.png", "/joinCourse", "java", "javaicon" );
+
+                else if(courseArray[i] === 1)
+                    container("Criminal Justice/Law", "../static/crimicon.png", "/joinCourse", "crim", "crimicon" );
+
+                else if(courseArray[i] === 2)
+                    container("Math", "../static/mathicon.png", "/joinCourse", "math", "mathicon" );
+
+                else if(courseArray[i] === 3)
+                    container("English", "../static/engicon.png", "/joinCourse", "eng", "engicon" );
+
+                else if(courseArray[i] === 4)
+                    container("Python", "../static/pythonicon.png", "/joinCourse", "python", "pythonicon" );
+
+                else if(courseArray[i] === 5)
+                    container("Medical Enrichment", "../static/medicon.png", "/joinCourse", "med", "medicon" );
+            }
+
+            
+            function container(className, imageSource, courseLink, divClass, imageClass)
+            {
+                var box = document.createElement("div");
+                // Add a CSS class to the box 
+                box.classList.add(divClass);
+
+                var image = document.createElement("img");
+                image.classList.add(imageClass);
+                image.src = imageSource;
+                image.style.width = "50px";
+                image.style.height = "50px";
+                box.appendChild(image);
+
+                console.log("Course Name: " + courseName);
+                var courseName = document.createElement("h1");
+                let t = className;
+                var text = document.createTextNode(t);
+                courseName.appendChild(text);
+                box.appendChild(courseName);
+
+                var button = document.createElement("button");
+                button.type = "button";
+                button.innerText = "Go to Classroom";
+
+                var span = document.createElement("span");
+                button.appendChild(span);
+                box.appendChild(button);
+
+                button.addEventListener("click", function() {
+                    window.open(courseLink, "_self");
+                });
+
+                document.getElementById("classContainer").appendChild(box);
+            }
+
+                
+        </script>
+
+
     </body>
 </html>
