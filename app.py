@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect, request, session, flash, g
 from datetime import timedelta
 import sqlite3
 import re
+import hashlib
 
 
 app = Flask(__name__)
@@ -15,11 +16,11 @@ app.permanent_session_lifetime = timedelta(minutes = 3)
 def get_db():
 	connection = getattr(g, '_database', None)
 	if connection is None: # open database if no database is active
-		connection = g._database = sqlite3.connect('users.db')
+		connection = g._database = sqlite3.connect('hackademics.db')
 		db = connection.cursor()
 		db.execute("""CREATE TABLE IF NOT EXISTS users(user_id INTEGER PRIMARY KEY, email TEXT, password TEXT)""")
 		db.execute("""CREATE TABLE IF NOT EXISTS courses(course_id INTEGER,
-			user_id INTEGER, course_name TEXT, lesson INTEGER, 
+			user_id INTEGER, course_name TEXT, 
 			FOREIGN KEY(user_id) REFERENCES users(user_id))""")
 
 		connection.commit()
@@ -31,6 +32,15 @@ def close_connection(exception):
 	db = getattr(g, '_database', None)
 	if db is not None: #close if there is a database
 		db.close()
+
+def hash_password(password):
+    # Use SHA256 to hash the password
+    hasher = hashlib.sha256()
+    password_bytes = password.encode()
+    hasher.update(password_bytes)
+    password_hash = hasher.hexdigest()
+
+    return password_hash
 
 @app.route("/")
 def home():
@@ -58,7 +68,7 @@ def login():
 		userEmail = request.form["email"]
 		userPassword = request.form["password"]
 		db, connection = get_db()
-		db.execute('SELECT user_id FROM users WHERE email=? AND password = ?', (userEmail, userPassword))
+		db.execute('SELECT user_id FROM users WHERE email=? AND password = ?', (userEmail, hash_password(userPassword)))
 		user_id = db.fetchall() # returns a tuple like this: (userId,)
 		if user_id: # if user exists
 			session.permanent = True
@@ -97,6 +107,7 @@ def signup():
 
 			#check if email already exists
 			if not userExists:
+				userPassword = hash_password(userPassword)
 				db.execute("INSERT INTO users(email, password) VALUES(?, ?)", (userEmail, userPassword))
 				connection.commit()
 
@@ -106,7 +117,7 @@ def signup():
 				session["email"] = userEmail
 				session["password"] = userPassword
 
-				flash("You have been signed up")
+				flash("You have been signed up. Here is your hashed password:", userPassword)
 				return redirect("dashboard")
 			#if email already exists
 			else:
@@ -135,8 +146,8 @@ def dashboard():
 		user_id = session["user_id"]
 		userEmail = session["email"]
 		db, connection = get_db()
-		db.execute("SELECT course_id, course_name, lesson FROM courses WHERE user_id = ?", (user_id))
-		courseList = db.fetchall() #returns a tuple: (course_id, course_name, lesson)
+		db.execute("SELECT course_id, course_name FROM courses WHERE user_id = ?", (user_id))
+		courseList = db.fetchall() #returns a list of tuples: [(course_id, course_name), (x, y)]
 		return render_template("dashboard.html", email = userEmail, courses = courseList)
 	
 	else:
@@ -165,7 +176,7 @@ def users():
 	return render_template("users.html", users = userList)
 
 @app.route("/joinCourse", methods = ["POST", "GET"])
-def joinCourse(): #TO DO 12/20/22 MAKE courses into a dictionary to assign courseID
+def joinCourse(): 
 	#user must be signed in to register for courses
 	if "user_id" in session:
 		courseList = ["Java", "Criminal Justice/Law", "Math", 
@@ -204,7 +215,7 @@ def joinCourse(): #TO DO 12/20/22 MAKE courses into a dictionary to assign cours
 				#the user doesn't have this course yet
 				db.execute("INSERT INTO courses(course_id, user_id, course_name) VALUES(?, ?, ?)", (course_id, user_id[0], course))
 				connection.commit()
-				flash(f"Courses variable: {course} and user_id {user_id} and course_id: {course_id} and userCourses: {userCourses}")					
+				#flash(f"Courses variable: {course} and user_id {user_id} and course_id: {course_id} and userCourses: {userCourses}")					
 
 				return redirect("dashboard")
 
