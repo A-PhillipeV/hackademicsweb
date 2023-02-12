@@ -44,6 +44,16 @@
     left:25%;
 }
 
+.content a{
+    color:gold;
+    font-family: font;
+}
+
+.content:visited a {
+    color:gold;
+    font-family: font;
+}
+
 
 
 .navbar{
